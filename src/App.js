@@ -18,7 +18,7 @@ import EnglishInstructions from './components/InstructionContainer/EnglishInstru
 import SpanishInstructions from './components/InstructionContainer/SpanishInstructions.js';
 
 import SecondBottomNavBar from './components/NavbarContainer/SecondBottomNavBar.js';
-import SecondMainWelcome from './components/MainWelcomeContainer/SecondMainWelcome.js';
+
 
 
 
@@ -32,10 +32,10 @@ function App() {
           <Row>
                 <Switch>
                   {/* <Route exact path="/" component={MainWelcome} /> */}
-                  <Route exact path="/" component={SecondMainWelcome} />
+                  <Route exact path="/" component={MainWelcome} />
                   <Route path="/sign-in" component={Login} />
                   <Route path="/sign-up" component={SignUp} />
-                  <Route path="/avatar" component={Avatar} />
+                
                   <Route path="/userhome" component={UserHome} />
                   <Route path="/game" component={Game} />
                   <Route path="/forgotpw" component={ForgotPassword} />
