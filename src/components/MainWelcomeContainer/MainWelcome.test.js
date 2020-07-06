@@ -15,7 +15,7 @@ describe ('animation',() => {
 
 
 describe ('Mainwelcome',() => {
-    it (' find button', () => {
+    it (' find Welcome button', () => {
         const wrapper = shallow (<MainWelcome/>);
         const svg = wrapper.find('h1').text();
         expect (svg).toEqual(' <MainWelcomeButton /> ');
@@ -25,7 +25,7 @@ describe ('Mainwelcome',() => {
 
 
 describe ('Mainwelcome',() => {
-    it (' find animation', () => {
+    it (' find h1', () => {
         const wrapper = shallow (<MainWelcome/>);
         const svg = wrapper.find('h1');
         expect (svg).toBe  ('svg');
