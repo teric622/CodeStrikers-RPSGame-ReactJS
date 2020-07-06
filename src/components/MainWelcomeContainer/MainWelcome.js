@@ -11,6 +11,7 @@ export default class WelcomeFirstScreen extends Component {
     render() { 
         return (
 <h1>
+   
  <Row className= 'logo'>
  <svg id = 'logo'width="300" height="500" viewBox="0 0 345 116" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" clip-rule="evenodd" 

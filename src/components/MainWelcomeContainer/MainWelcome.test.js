@@ -4,16 +4,16 @@ import MainWelcome from './MainWelcome'
 // 1. Make sure Welcome button shows up
 // 2. need to make sure h1 sshows up 
 // 3. Need to make sure the SVG can be seen 
-
-describe ('animation',() => {
-    it (' finds 1 animation', () => {
+//
+describe ('find',() => {
+    it (' find 1  h1', () => {
         const wrapper = shallow (<MainWelcome/>);
-        const header = wrapper.find('h1');
-        expect (header).toHaveLength(1);
-    })
+        const svg = wrapper.find('h1');
+        expect (svg).toHaveLength(1);
+    }) 
 })
 
-
+//find button
 describe ('Mainwelcome',() => {
     it (' find Welcome button', () => {
         const wrapper = shallow (<MainWelcome/>);
@@ -22,12 +22,14 @@ describe ('Mainwelcome',() => {
     })
 })
 
+// find h1
 
 
-describe ('Mainwelcome',() => {
-    it (' find h1', () => {
+
+describe ('svg',() => {
+    it (' find logo', () => {
         const wrapper = shallow (<MainWelcome/>);
         const svg = wrapper.find('h1');
-        expect (svg).toBe  ('svg');
+        expect (svg).toEqual ({});
     })
 })
