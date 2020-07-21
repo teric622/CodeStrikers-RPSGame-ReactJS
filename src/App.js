@@ -18,6 +18,7 @@ import EnglishInstructions from './components/InstructionContainer/EnglishInstru
 import SpanishInstructions from './components/InstructionContainer/SpanishInstructions.js';
 
 import SecondBottomNavBar from './components/NavbarContainer/SecondBottomNavBar.js';
+import Amplify from "aws-amplify";
 
 
 
