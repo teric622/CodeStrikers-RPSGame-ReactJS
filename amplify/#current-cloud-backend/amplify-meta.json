@@ -1,0 +1,38 @@
+{
+	"providers": {
+		"awscloudformation": {
+			"AuthRoleName": "amplify-codestrikersrpsgamer-dev-213833-authRole",
+			"UnauthRoleArn": "arn:aws:iam::348048855092:role/amplify-codestrikersrpsgamer-dev-213833-unauthRole",
+			"AuthRoleArn": "arn:aws:iam::348048855092:role/amplify-codestrikersrpsgamer-dev-213833-authRole",
+			"Region": "us-east-1",
+			"DeploymentBucketName": "amplify-codestrikersrpsgamer-dev-213833-deployment",
+			"UnauthRoleName": "amplify-codestrikersrpsgamer-dev-213833-unauthRole",
+			"StackName": "amplify-codestrikersrpsgamer-dev-213833",
+			"StackId": "arn:aws:cloudformation:us-east-1:348048855092:stack/amplify-codestrikersrpsgamer-dev-213833/888a0450-cb9a-11ea-b63f-0e1aa735f904",
+			"AmplifyAppId": "d1a2xdnl4ni5h1"
+		}
+	},
+	"auth": {
+		"codestrikersrpsgamer96f2a9b1": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false,
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-codestrikersrpsgamer-dev-213833-deployment/amplify-cfn-templates/auth/codestrikersrpsgamer96f2a9b1-cloudformation-template.yml",
+				"logicalId": "authcodestrikersrpsgamer96f2a9b1"
+			},
+			"lastPushTimeStamp": "2020-07-21T21:46:50.379Z",
+			"output": {
+				"AppClientSecret": "oi9vuq0f8g7penvqflrh34egf0gp7fsr8qet3i54vnbtinm4r07",
+				"UserPoolId": "us-east-1_5PBUxqBKU",
+				"AppClientIDWeb": "1etvh9s9n547dnkc38ttlenecs",
+				"AppClientID": "18l99cl8p9fl30ten0a44va9rk",
+				"IdentityPoolId": "us-east-1:fd02cba9-9454-4846-94ab-9e127af81ae7",
+				"IdentityPoolName": "codestrikersrpsgamer96f2a9b1_identitypool_96f2a9b1__dev",
+				"UserPoolName": "codestrikersrpsgamer96f2a9b1_userpool_96f2a9b1"
+			},
+			"lastPushDirHash": "tmVqKs2KTAfokBASOo0COk5VMbc="
+		}
+	}
+}

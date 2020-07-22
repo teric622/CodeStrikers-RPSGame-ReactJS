@@ -1,0 +1,10 @@
+{
+	"auth": {
+		"codestrikersrpsgamer96f2a9b1": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false
+		}
+	}
+}
