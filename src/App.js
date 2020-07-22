@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
@@ -11,47 +11,52 @@ import Login from "./components/LoginContainer/Login.js";
 import SignUp from "./components/SignUpContainer/SignUp.js";
 import UserHome from './components/UserHomeContainer/UserHome.js';
 import MainWelcome from './components/MainWelcomeContainer/MainWelcome.js';
-import Game from  './components/GameContainer/Game.js';
+import Game from './components/GameContainer/Game.js';
 import Menu from './components/MenuContainer/Menu.js';
 import ForgotPassword from "./components/ForgotPasswordContainer/ForgotPassword.js";
 import EnglishInstructions from './components/InstructionContainer/EnglishInstructions.js';
 import SpanishInstructions from './components/InstructionContainer/SpanishInstructions.js';
-
 import SecondBottomNavBar from './components/NavbarContainer/SecondBottomNavBar.js';
-import Amplify from "aws-amplify";
+import Amplify, { Auth } from 'aws-amplify';
+import awsmobile from './aws-exports.js';
+import {AmplifyAuthenticator,AmplifySignIn,AmplifySignOut} from '@aws-amplify/ui-react';
+
+Amplify.configure(awsmobile);
+
+
 
 
 
 
 
 function App() {
-  return (
-      <Container>   
+    return (
+        <Container>
 
-        <Router>
-          <div className="App">
-          <Row>
-                <Switch>
-                  {/* <Route exact path="/" component={MainWelcome} /> */}
-                  <Route exact path="/" component={MainWelcome} />
-                  <Route path="/sign-in" component={Login} />
-                  <Route path="/sign-up" component={SignUp} />
-                
-                  <Route path="/userhome" component={UserHome} />
-                  <Route path="/game" component={Game} />
-                  <Route path="/forgotpw" component={ForgotPassword} />
-                  <Route path="/englishinstructions" component={EnglishInstructions} />
-                  <Route path="/SpanishInstructions" component={SpanishInstructions} />
-                  
-                </Switch>
-              </Row>
-            
-          </div>
-        </Router>
+            <Router>
+                <div className="App">
+                    <Row>
+                        <Switch>
+                            {/* <Route exact path="/" component={MainWelcome} /> */}
+                            <Route exact path="/" component={MainWelcome} />
+                            <Route path="/sign-in" component={Login} />
+                            <Route path="/sign-up" component={SignUp} />
+
+                            <Route path="/userhome" component={UserHome} />
+                            <Route path="/game" component={Game} />
+                            <Route path="/forgotpw" component={ForgotPassword} />
+                            <Route path="/englishinstructions" component={EnglishInstructions} />
+                            <Route path="/SpanishInstructions" component={SpanishInstructions} />
+
+                        </Switch>
+                    </Row>
+
+                </div>
+            </Router>
             <Row className="new-nav"><SecondBottomNavBar /></Row>
             <hr className='line'></hr>
-      </Container>
-  );
+        </Container>
+    );
 }
 
 export default App;
