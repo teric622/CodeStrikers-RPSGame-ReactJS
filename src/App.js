@@ -18,10 +18,9 @@ import EnglishInstructions from './components/InstructionContainer/EnglishInstru
 import SpanishInstructions from './components/InstructionContainer/SpanishInstructions.js';
 import SecondBottomNavBar from './components/NavbarContainer/SecondBottomNavBar.js';
 import Amplify, { Auth } from 'aws-amplify';
-import awsmobile from './aws-exports.js';
-import {AmplifyAuthenticator,AmplifySignIn,AmplifySignOut} from '@aws-amplify/ui-react';
+import {AmplifySignIn,AmplifySignOut} from '@aws-amplify/ui-react';
+import {withAuthenticator} from '@aws-amplify/ui-react';
 
-Amplify.configure(awsmobile);
 
 
 
@@ -37,17 +36,17 @@ function App() {
                 <div className="App">
                     <Row>
                         <Switch>
-                            {/* <Route exact path="/" component={MainWelcome} /> */}
-                            <Route exact path="/" component={MainWelcome} />
-                            <Route path="/sign-in" component={Login} />
-                            <Route path="/sign-up" component={SignUp} />
-
+                            <Route exact path="/" component={AmplifySignIn} />
+                            {/* <Route path="/sign-in" component={Login} />
+                            <Route path="/sign-up" component={SignUp} /> */}
+                            <Route path="/sign-in" component={AmplifySignIn} />
+                           <Route exact path="/House" component={MainWelcome} />
                             <Route path="/userhome" component={UserHome} />
                             <Route path="/game" component={Game} />
                             <Route path="/forgotpw" component={ForgotPassword} />
                             <Route path="/englishinstructions" component={EnglishInstructions} />
                             <Route path="/SpanishInstructions" component={SpanishInstructions} />
-
+                             <Route path="/Exit" component={AmplifySignOut} />
                         </Switch>
                     </Row>
 
@@ -59,7 +58,7 @@ function App() {
     );
 }
 
-export default App;
+export default withAuthenticator(App, true);
 
 
 

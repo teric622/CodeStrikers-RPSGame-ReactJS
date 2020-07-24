@@ -3,11 +3,25 @@
 
 const awsmobile = {
     "aws_project_region": "us-east-1",
-    "aws_cognito_identity_pool_id": "us-east-1:fd02cba9-9454-4846-94ab-9e127af81ae7",
+    "aws_cognito_identity_pool_id": "us-east-1:cbc9c211-5748-435b-94f2-d7f5daf7f4c1",
     "aws_cognito_region": "us-east-1",
-    "aws_user_pools_id": "us-east-1_5PBUxqBKU",
-    "aws_user_pools_web_client_id": "1etvh9s9n547dnkc38ttlenecs",
-    "oauth": {}
+    "aws_user_pools_id": "us-east-1_s1CRX9xvK",
+    "aws_user_pools_web_client_id": "1qe2ee5khm4tgjna7gjaevfn2l",
+    "oauth": {},
+    "aws_dynamodb_all_tables_region": "us-east-1",
+    "aws_dynamodb_table_schemas": [
+        {
+            "tableName": "rpsplayerrecord-rpsdev",
+            "region": "us-east-1"
+        }
+    ],
+    "aws_cloud_logic_custom": [
+        {
+            "name": "rpsapi",
+            "endpoint": "https://fkcgdca4yl.execute-api.us-east-1.amazonaws.com/rpsdev",
+            "region": "us-east-1"
+        }
+    ]
 };
 
 

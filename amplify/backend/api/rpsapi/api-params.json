@@ -1,0 +1,39 @@
+{
+    "paths": [
+        {
+            "name": "/user/record",
+            "lambdaFunction": "rpsuserfunction",
+            "privacy": {
+                "private": true,
+                "auth": [
+                    "/GET",
+                    "/PUT",
+                    "/PATCH"
+                ]
+            }
+        }
+    ],
+    "resourceName": "rpsapi",
+    "apiName": "rpsapi",
+    "functionArns": [
+        {
+            "lambdaFunction": "rpsuserfunction"
+        }
+    ],
+    "privacy": {
+        "auth": 1,
+        "unauth": 0,
+        "authRoleName": "amplify-codestrikersrpsgamer-rpsdev-164234-authRole",
+        "unAuthRoleName": "amplify-codestrikersrpsgamer-rpsdev-164234-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "rpsuserfunction",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}

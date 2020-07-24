@@ -71,7 +71,7 @@
 		"authcodestrikersrpsgamer96f2a9b1": {
 			"Type": "AWS::CloudFormation::Stack",
 			"Properties": {
-				"TemplateURL": "https://s3.amazonaws.com/amplify-codestrikersrpsgamer-dev-213833-deployment/amplify-cfn-templates/auth/codestrikersrpsgamer96f2a9b1-cloudformation-template.yml",
+				"TemplateURL": "https://s3.amazonaws.com/amplify-codestrikersrpsgamer-rpsdev-164234-deployment/amplify-cfn-templates/auth/codestrikersrpsgamer96f2a9b1-cloudformation-template.yml",
 				"Parameters": {
 					"identityPoolName": "codestrikersrpsgamer96f2a9b1_identitypool_96f2a9b1",
 					"allowUnauthenticatedIdentities": false,
@@ -113,7 +113,69 @@
 					"usernameAttributes": "email",
 					"userPoolGroupList": "",
 					"dependsOn": "",
-					"env": "dev"
+					"env": "rpsdev"
+				}
+			}
+		},
+		"storagerpsplayerrecord": {
+			"Type": "AWS::CloudFormation::Stack",
+			"Properties": {
+				"TemplateURL": "https://s3.amazonaws.com/amplify-codestrikersrpsgamer-rpsdev-164234-deployment/amplify-cfn-templates/storage/rpsplayerrecord-cloudformation-template.json",
+				"Parameters": {
+					"tableName": "rpsplayerrecord",
+					"partitionKeyName": "user_id",
+					"partitionKeyType": "S",
+					"sortKeyName": "wins",
+					"sortKeyType": "N",
+					"env": "rpsdev"
+				}
+			}
+		},
+		"functionrpsuserfunction": {
+			"Type": "AWS::CloudFormation::Stack",
+			"Properties": {
+				"TemplateURL": "https://s3.amazonaws.com/amplify-codestrikersrpsgamer-rpsdev-164234-deployment/amplify-cfn-templates/function/rpsuserfunction-cloudformation-template.json",
+				"Parameters": {
+					"storagerpsplayerrecordName": {
+						"Fn::GetAtt": [
+							"storagerpsplayerrecord",
+							"Outputs.Name"
+						]
+					},
+					"storagerpsplayerrecordArn": {
+						"Fn::GetAtt": [
+							"storagerpsplayerrecord",
+							"Outputs.Arn"
+						]
+					},
+					"env": "rpsdev"
+				}
+			}
+		},
+		"apirpsapi": {
+			"Type": "AWS::CloudFormation::Stack",
+			"Properties": {
+				"TemplateURL": "https://s3.amazonaws.com/amplify-codestrikersrpsgamer-rpsdev-164234-deployment/amplify-cfn-templates/api/rpsapi-cloudformation-template.json",
+				"Parameters": {
+					"authRoleName": {
+						"Ref": "AuthRoleName"
+					},
+					"unauthRoleName": {
+						"Ref": "UnauthRoleName"
+					},
+					"functionrpsuserfunctionName": {
+						"Fn::GetAtt": [
+							"functionrpsuserfunction",
+							"Outputs.Name"
+						]
+					},
+					"functionrpsuserfunctionArn": {
+						"Fn::GetAtt": [
+							"functionrpsuserfunction",
+							"Outputs.Arn"
+						]
+					},
+					"env": "rpsdev"
 				}
 			}
 		},
@@ -142,8 +204,8 @@
 								"    let authParamsJson = { 'Version': '2012-10-17','Statement': [{'Effect': 'Allow','Principal': {'Federated': 'cognito-identity.amazonaws.com'},'Action': 'sts:AssumeRoleWithWebIdentity','Condition': {'StringEquals': {'cognito-identity.amazonaws.com:aud': idpId},'ForAnyValue:StringLike': {'cognito-identity.amazonaws.com:amr': 'authenticated'}}}]};",
 								"    let unauthParamsJson = { 'Version': '2012-10-17','Statement': [{'Effect': 'Allow','Principal': {'Federated': 'cognito-identity.amazonaws.com'},'Action': 'sts:AssumeRoleWithWebIdentity','Condition': {'StringEquals': {'cognito-identity.amazonaws.com:aud': idpId},'ForAnyValue:StringLike': {'cognito-identity.amazonaws.com:amr': 'unauthenticated'}}}]};",
 								"    if (event.RequestType == 'Delete') {",
-								"        delete authParamsJson.Statement.Condition;",
-								"        delete unauthParamsJson.Statement.Condition;",
+								"        delete authParamsJson.Statement[0].Condition;",
+								"        delete unauthParamsJson.Statement[0].Condition;",
 								"        let authParams = { PolicyDocument: JSON.stringify(authParamsJson),RoleName: authRoleName};",
 								"        let unauthParams = {PolicyDocument: JSON.stringify(unauthParamsJson),RoleName: unauthRoleName};",
 								"        const iam = new aws.IAM({ apiVersion: '2010-05-08', region: event.ResourceProperties.region});",

@@ -1,28 +1,123 @@
 {
-    "providers": {
-        "awscloudformation": {
-            "AuthRoleName": "amplify-codestrikersrpsgamer-dev-213833-authRole",
-            "UnauthRoleArn": "arn:aws:iam::348048855092:role/amplify-codestrikersrpsgamer-dev-213833-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::348048855092:role/amplify-codestrikersrpsgamer-dev-213833-authRole",
-            "Region": "us-east-1",
-            "DeploymentBucketName": "amplify-codestrikersrpsgamer-dev-213833-deployment",
-            "UnauthRoleName": "amplify-codestrikersrpsgamer-dev-213833-unauthRole",
-            "StackName": "amplify-codestrikersrpsgamer-dev-213833",
-            "StackId": "arn:aws:cloudformation:us-east-1:348048855092:stack/amplify-codestrikersrpsgamer-dev-213833/888a0450-cb9a-11ea-b63f-0e1aa735f904",
-            "AmplifyAppId": "d1a2xdnl4ni5h1"
-        },
-        "categories": {
-            "auth": {
-                "codestrikersrpsgamer96f2a9b1": {}
-            }
-        }
-    },
-    "auth": {
-        "codestrikersrpsgamer96f2a9b1": {
-            "service": "Cognito",
-            "providerPlugin": "awscloudformation",
-            "dependsOn": [],
-            "customAuth": false
-        }
-    }
+	"providers": {
+		"awscloudformation": {
+			"AuthRoleName": "amplify-codestrikersrpsgamer-rpsdev-164234-authRole",
+			"UnauthRoleArn": "arn:aws:iam::348048855092:role/amplify-codestrikersrpsgamer-rpsdev-164234-unauthRole",
+			"AuthRoleArn": "arn:aws:iam::348048855092:role/amplify-codestrikersrpsgamer-rpsdev-164234-authRole",
+			"Region": "us-east-1",
+			"DeploymentBucketName": "amplify-codestrikersrpsgamer-rpsdev-164234-deployment",
+			"UnauthRoleName": "amplify-codestrikersrpsgamer-rpsdev-164234-unauthRole",
+			"StackName": "amplify-codestrikersrpsgamer-rpsdev-164234",
+			"StackId": "arn:aws:cloudformation:us-east-1:348048855092:stack/amplify-codestrikersrpsgamer-rpsdev-164234/add3e8f0-cdcc-11ea-8d58-0a99e59b1983",
+			"AmplifyAppId": "d1a2xdnl4ni5h1"
+		}
+	},
+	"auth": {
+		"codestrikersrpsgamer96f2a9b1": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false,
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-codestrikersrpsgamer-rpsdev-164234-deployment/amplify-cfn-templates/auth/codestrikersrpsgamer96f2a9b1-cloudformation-template.yml",
+				"logicalId": "authcodestrikersrpsgamer96f2a9b1"
+			},
+			"lastPushTimeStamp": "2020-07-24T17:02:34.956Z",
+			"output": {
+				"AppClientSecret": "15seb5mttc44lf2c1oka167ajrt565piebor8us5c9hlnjq4cuhc",
+				"UserPoolId": "us-east-1_s1CRX9xvK",
+				"AppClientIDWeb": "1qe2ee5khm4tgjna7gjaevfn2l",
+				"AppClientID": "3tvnd4dvsaslkk5c7nhqovl725",
+				"IdentityPoolId": "us-east-1:cbc9c211-5748-435b-94f2-d7f5daf7f4c1",
+				"IdentityPoolName": "codestrikersrpsgamer96f2a9b1_identitypool_96f2a9b1__rpsdev",
+				"UserPoolName": "codestrikersrpsgamer96f2a9b1_userpool_96f2a9b1"
+			},
+			"lastPushDirHash": "tmVqKs2KTAfokBASOo0COk5VMbc="
+		}
+	},
+	"storage": {
+		"rpsplayerrecord": {
+			"service": "DynamoDB",
+			"providerPlugin": "awscloudformation",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-codestrikersrpsgamer-rpsdev-164234-deployment/amplify-cfn-templates/storage/rpsplayerrecord-cloudformation-template.json",
+				"logicalId": "storagerpsplayerrecord"
+			},
+			"lastPushTimeStamp": "2020-07-24T17:02:34.956Z",
+			"output": {
+				"PartitionKeyName": "user_id",
+				"SortKeyName": "wins",
+				"SortKeyType": "N",
+				"Region": "us-east-1",
+				"Arn": "arn:aws:dynamodb:us-east-1:348048855092:table/rpsplayerrecord-rpsdev",
+				"StreamArn": "arn:aws:dynamodb:us-east-1:348048855092:table/rpsplayerrecord-rpsdev/stream/2020-07-24T16:59:43.632",
+				"PartitionKeyType": "S",
+				"Name": "rpsplayerrecord-rpsdev"
+			},
+			"lastPushDirHash": "jtqZSdpFcyEZS9I/xlWfd4sdE0E="
+		}
+	},
+	"function": {
+		"rpsuserfunction": {
+			"build": true,
+			"providerPlugin": "awscloudformation",
+			"service": "Lambda",
+			"dependsOn": [
+				{
+					"category": "storage",
+					"resourceName": "rpsplayerrecord",
+					"attributes": [
+						"Name",
+						"Arn"
+					],
+					"attributeEnvMap": {
+						"Name": "TABLE_NAME",
+						"Arn": "TABLE_ARN"
+					}
+				}
+			],
+			"lastBuildTimeStamp": "2020-07-24T16:59:24.178Z",
+			"lastPackageTimeStamp": "2020-07-24T16:59:28.735Z",
+			"distZipFilename": "rpsuserfunction-4b43356d616837444367-build.zip",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-codestrikersrpsgamer-rpsdev-164234-deployment/amplify-cfn-templates/function/rpsuserfunction-cloudformation-template.json",
+				"logicalId": "functionrpsuserfunction"
+			},
+			"lastPushTimeStamp": "2020-07-24T17:02:34.956Z",
+			"output": {
+				"Region": "us-east-1",
+				"Arn": "arn:aws:lambda:us-east-1:348048855092:function:rpsuserfunction-rpsdev",
+				"Name": "rpsuserfunction-rpsdev",
+				"LambdaExecutionRole": "codestrikersrpsgamerLambdaRole52f0594f-rpsdev"
+			},
+			"lastPushDirHash": "rShh4bWswiCfIgmH8dCxnYP9JT4="
+		}
+	},
+	"api": {
+		"rpsapi": {
+			"service": "API Gateway",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [
+				{
+					"category": "function",
+					"resourceName": "rpsuserfunction",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			],
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-codestrikersrpsgamer-rpsdev-164234-deployment/amplify-cfn-templates/api/rpsapi-cloudformation-template.json",
+				"logicalId": "apirpsapi"
+			},
+			"lastPushTimeStamp": "2020-07-24T17:02:34.956Z",
+			"output": {
+				"ApiName": "rpsapi",
+				"RootUrl": "https://fkcgdca4yl.execute-api.us-east-1.amazonaws.com/rpsdev",
+				"ApiId": "fkcgdca4yl"
+			},
+			"lastPushDirHash": "/i5kaA7KOIoQAtDvd0proDSxXl0="
+		}
+	}
 }

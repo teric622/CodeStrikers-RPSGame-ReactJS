@@ -13,9 +13,10 @@ export default class SecondNavBar extends Component{
                     <Navbar fixed="top"  className="bot-navbar">
                         
                         <Nav className='navi'>
-                            <Nav.Link href="/menu"><i class="fas fa-home "></i></Nav.Link>
+                            <Nav.Link href="/House"><i class="fas fa-home "></i></Nav.Link>
                             <Nav.Link href="/userhome"><i class="fas fa-house-user "></i></Nav.Link>
                             <Nav.Link href="/englishinstructions"><i class="fas fa-question "></i></Nav.Link>
+                             <Nav.Link href="/Exit"><i class="fa fa-sign-out" aria-hidden="true"></i></Nav.Link>
                         </Nav>
                     </Navbar>
                 </Container>
