@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Row from 'react-bootstrap/Row';
@@ -17,16 +17,7 @@ import ForgotPassword from "./components/ForgotPasswordContainer/ForgotPassword.
 import EnglishInstructions from './components/InstructionContainer/EnglishInstructions.js';
 import SpanishInstructions from './components/InstructionContainer/SpanishInstructions.js';
 import SecondBottomNavBar from './components/NavbarContainer/SecondBottomNavBar.js';
-import Amplify, { Auth } from 'aws-amplify';
-import {AmplifySignIn,AmplifySignOut} from '@aws-amplify/ui-react';
-import {withAuthenticator} from '@aws-amplify/ui-react';
-
-
-
-
-
-
-
+import { SignOut } from 'aws-amplify-react';
 
 function App() {
     return (
@@ -36,29 +27,23 @@ function App() {
                 <div className="App">
                     <Row>
                         <Switch>
-                            <Route exact path="/" component={AmplifySignIn} />
-                            {/* <Route path="/sign-in" component={Login} />
-                            <Route path="/sign-up" component={SignUp} /> */}
-                            <Route path="/sign-in" component={AmplifySignIn} />
+                            <Route exact path="/" component={MainWelcome} />
+                             <Route path="/user" component={UserHome} />
+                            <Route path="/sign-up" component={SignUp} /> 
                            <Route exact path="/House" component={MainWelcome} />
                             <Route path="/userhome" component={UserHome} />
                             <Route path="/game" component={Game} />
                             <Route path="/forgotpw" component={ForgotPassword} />
                             <Route path="/englishinstructions" component={EnglishInstructions} />
                             <Route path="/SpanishInstructions" component={SpanishInstructions} />
-                             <Route path="/Exit" component={AmplifySignOut} />
+                            <Route path="/SignOut" component={SignOut} />
                         </Switch>
                     </Row>
-
                 </div>
             </Router>
             <Row className="new-nav"><SecondBottomNavBar /></Row>
             <hr className='line'></hr>
         </Container>
     );
-}
-
-export default withAuthenticator(App, true);
-
-
-
+    }
+    export default App;

@@ -12,9 +12,12 @@ import UserHomeButton from '../ButtonsContainer/UserHomeButton.js';
 
 
 import rps from '../../assets/images/rps-logo.png';
+import { withAuthenticator } from "aws-amplify-react";
+import MyAmplifyTheme from "../../MyAmplifyTheme.js";
 
 
-export default class WelcomeScreen extends Component {
+
+class WelcomeScreen extends Component {
     render() {
         return (
             <div>
@@ -51,3 +54,6 @@ export default class WelcomeScreen extends Component {
     }
 }
 
+export default withAuthenticator (WelcomeScreen, {
+theme: MyAmplifyTheme
+});

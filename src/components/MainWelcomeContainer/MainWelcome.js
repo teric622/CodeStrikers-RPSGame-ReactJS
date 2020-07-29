@@ -5,7 +5,9 @@ import Row from 'react-bootstrap/Row';
 import Image from 'react-bootstrap/Image';
 
 
-import MainWeclomeButton from '../ButtonsContainer/MainWelcomeButton.js';
+import MainWelcomeButton from '../ButtonsContainer/MainWelcomeButton.js';
+
+
 
 export default class WelcomeFirstScreen extends Component {
     render() { 
@@ -40,9 +42,8 @@ stroke="#F47D26"/><path fill-rule="evenodd" clip-rule="evenodd" d="M19 96.5V114H
 stroke="#F47D26"/><path d="M21.5 111.5V99.5H24.625H27.125L29 100.071L30.875 101.786L31.5 104.643V106.357C31.5 106.738 31.375 107.729 30.875 108.643C30.25 109.786 29 109.786 29 110.357C29 110.814 26.0833 111.31 24.625 111.5H21.5Z" stroke="#F47D26"/>
 </svg>
 </Row>
-  <Row > <MainWeclomeButton  /> </Row>
+  <Row > <MainWelcomeButton  /> </Row>
             </h1>
         );
     }
 }
-

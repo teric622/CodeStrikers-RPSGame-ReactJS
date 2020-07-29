@@ -1,19 +1,24 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 // importing amplify configuration
 import Amplify from 'aws-amplify';
 import awsmobile from './aws-exports.js';
+import MainWelcome from './components/MainWelcomeContainer/MainWelcome'
 
 Amplify.configure(awsmobile);
 
 ReactDOM.render(
     <BrowserRouter>
-        <App />
+        <App/>
     </BrowserRouter>,
+
+
+
+    
     document.getElementById("root")
 )
 

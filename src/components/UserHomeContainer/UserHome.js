@@ -8,13 +8,14 @@ import Row from 'react-bootstrap/Row';
 import PlayButton from '../ButtonsContainer/PlayButton.js';
 import EnglishInstructionsButton from '../ButtonsContainer/EnglishInstructionsButton.js';
 import PaypalButton from '../ButtonsContainer/PaypalButton.js';
-
+import {withAuthenticator} from 'aws-amplify-react';
+import MyAmplifyTheme from '../../MyAmplifyTheme';
 
 
 import plain from '../../assets/images/default-profile-image.png';
 import "bootstrap/dist/css/bootstrap.min.css"; 
 
- export default class UserHome extends Component {
+ class UserHome extends Component {
     render() {
         return (
           <div >
@@ -42,3 +43,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
     }
 }
 
+export default withAuthenticator (UserHome, {
+    theme: MyAmplifyTheme
+    });
